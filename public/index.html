@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bounding Box Viewer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Bounding Box Viewer</h1>
+    <p>Load local images and visualize bounding boxes from JSON files.</p>
+  </header>
+
+  <main class="app-main">
+    <section class="panel">
+      <div class="panel-card">
+        <h2>Upload Images</h2>
+        <input id="imageInput" type="file" accept="image/*" multiple>
+        <p class="helper-text">Files never leave your browser.</p>
+      </div>
+      <div class="panel-card">
+        <h2>Upload Bounding Boxes</h2>
+        <input id="bboxInput" type="file" accept="application/json,.json" multiple>
+        <p class="helper-text">Each JSON file can contain a single object or an array of objects.</p>
+        <details class="example">
+          <summary>Input format</summary>
+<pre>{
+  "image": "frame-01.jpg",
+  "label": "cat",
+  "box": {
+    "x1": 0.12,
+    "y1": 0.18,
+    "x2": 0.54,
+    "y2": 0.72
+  }
+}</pre>
+<pre>[
+  {
+    "image": "frame-01.jpg",
+    "label": "cat",
+    "box": {
+      "x1": 0.12,
+      "y1": 0.18,
+      "x2": 0.54,
+      "y2": 0.72
+    }
+  },
+  {
+    "imageIndex": 1,
+    "label": "dog",
+    "x1": 0.3,
+    "y1": 0.35,
+    "x2": 0.8,
+    "y2": 0.9
+  }
+]</pre>
+        </details>
+        <textarea id="bboxTextarea" class="bbox-textarea" placeholder="Paste JSON here and click &quot;Load from text&quot;"></textarea>
+        <button id="loadTextareaBtn" type="button">Load from text</button>
+        <div id="bboxError" class="error-message" role="alert"></div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="content-header">
+        <h2>Images</h2>
+        <span id="imageCounter" class="counter">0 files</span>
+      </div>
+      <div id="imageGrid" class="image-grid"></div>
+    </section>
+
+    <section class="content">
+      <div class="content-header">
+        <h2>Bounding Boxes</h2>
+        <span id="bboxCounter" class="counter">0 boxes</span>
+      </div>
+      <div id="bboxList" class="bbox-list"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Everything runs locally. Refresh the page to clear the session.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

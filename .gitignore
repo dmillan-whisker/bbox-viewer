@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Node / tooling
+node_modules/
+dist/
+
+# Python HTTP server cache
+__pycache__/

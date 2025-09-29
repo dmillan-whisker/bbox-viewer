@@ -77,12 +77,20 @@ input[type="file"] {
 }
 
 .bbox-textarea {
-  min-height: 120px;
+  width: 100%;
+  min-height: 200px;
   resize: vertical;
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.7);
+  background: #ffffff;
+  color: var(--fg);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  line-height: 1.4;
+}
+
+.bbox-textarea::placeholder {
+  color: var(--muted);
 }
 
 .button,
@@ -270,4 +278,3 @@ button:active {
   color: var(--error);
   font-size: 0.8rem;
 }
-

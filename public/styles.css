@@ -116,6 +116,28 @@ button:active {
   transform: translateY(0);
 }
 
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  box-shadow: none;
+}
+
+.button-secondary:hover {
+  box-shadow: none;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.button-secondary:active {
+  background: rgba(37, 99, 235, 0.12);
+}
+
 .helper-text {
   margin: 0;
   font-size: 0.9rem;

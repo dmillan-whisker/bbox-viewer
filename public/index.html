@@ -18,6 +18,7 @@
         <h2>Upload Images</h2>
         <input id="imageInput" type="file" accept="image/*" multiple>
         <p class="helper-text">Files never leave your browser.</p>
+        <button id="clearImagesBtn" type="button" class="button-secondary">Clear images</button>
       </div>
       <div class="panel-card">
         <h2>Upload Bounding Boxes</h2>
@@ -57,7 +58,11 @@
 ]</pre>
         </details>
         <textarea id="bboxTextarea" class="bbox-textarea" placeholder="Paste JSON here and click &quot;Load from text&quot;"></textarea>
-        <button id="loadTextareaBtn" type="button">Load from text</button>
+        <div class="button-group">
+          <button id="loadTextareaBtn" type="button">Load from text</button>
+          <button id="clearBoxesBtn" type="button" class="button-secondary">Clear boxes</button>
+          <button id="clearSessionBtn" type="button" class="button-secondary">Reset all</button>
+        </div>
         <div id="bboxError" class="error-message" role="alert"></div>
       </div>
     </section>
@@ -80,7 +85,7 @@
   </main>
 
   <footer class="app-footer">
-    <p>Everything runs locally. Refresh the page to clear the session.</p>
+    <p>Everything runs locally. Use the clear buttons above to reset.</p>
   </footer>
 
   <script type="module" src="app.js"></script>

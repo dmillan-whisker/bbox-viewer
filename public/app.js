@@ -7,6 +7,9 @@ const imageGrid = document.getElementById('imageGrid');
 const bboxList = document.getElementById('bboxList');
 const imageCounter = document.getElementById('imageCounter');
 const bboxCounter = document.getElementById('bboxCounter');
+const clearImagesBtn = document.getElementById('clearImagesBtn');
+const clearBoxesBtn = document.getElementById('clearBoxesBtn');
+const clearSessionBtn = document.getElementById('clearSessionBtn');
 
 const palette = [
   '#f97316',
@@ -39,6 +42,9 @@ loadTextareaBtn.addEventListener('click', () => {
   }
   parseBoundingBoxes(raw, 'pasted JSON');
 });
+clearImagesBtn.addEventListener('click', clearImages);
+clearBoxesBtn.addEventListener('click', clearBoxes);
+clearSessionBtn.addEventListener('click', clearSession);
 
 function handleImageUpload(event) {
   clearError();
@@ -373,6 +379,30 @@ function rebuildImageNameMap() {
 function revokeObjectUrls() {
   state.objectUrls.forEach((url) => URL.revokeObjectURL(url));
   state.objectUrls = [];
+}
+
+function clearImages() {
+  revokeObjectUrls();
+  state.images = [];
+  state.imageElements = new Map();
+  state.imagesByName = new Map();
+  imageInput.value = '';
+  renderImages();
+  renderAllBoundingBoxes();
+  clearError();
+}
+
+function clearBoxes() {
+  state.boxes = [];
+  bboxTextarea.value = '';
+  bboxInput.value = '';
+  renderAllBoundingBoxes();
+  clearError();
+}
+
+function clearSession() {
+  clearImages();
+  clearBoxes();
 }
 
 function clearError() {
